@@ -1,0 +1,22 @@
+{
+  "name": "spryng/php-api",
+  "description": "Spryng API client library for PHP",
+  "version": "0.1",
+  "homepage": "https://github.com/Roemerb/SpryngPhpApi",
+  "license": "BSD-2-Clause",
+  "authors": [
+    {
+      "name": "Roemer Bakker",
+      "email": "contact@roemerbakker.com",
+      "company": "Complexity Software"
+    }
+  ],
+  "keywords": [
+    "spryng", "php", "api", "sms", "text", "gateway"
+  ],
+  "autoload": {
+    "psr-0": {
+      "": "src/"
+    }
+  }
+}
