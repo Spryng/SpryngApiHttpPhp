@@ -7,10 +7,12 @@
   "authors": [
     {
       "name": "Roemer Bakker",
-      "email": "contact@roemerbakker.com",
-      "company": "Complexity Software"
+      "email": "contact@roemerbakker.com"
     }
   ],
+  "require": {
+    "guzzlehttp/guzzle": "~6.0"
+  },
   "keywords": [
     "spryng", "php", "api", "sms", "text", "gateway"
   ],
