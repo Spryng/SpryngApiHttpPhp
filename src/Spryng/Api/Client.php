@@ -18,7 +18,7 @@ class Spryng_Api_Client
     /**
      * @var string Endpoint for all Api requests
      */
-    const API_ENDPOINT = "https://spryng.nl";
+    const API_ENDPOINT = "http://spryng.nl";
 
     protected $apiEndpoint = self::API_ENDPOINT;
 

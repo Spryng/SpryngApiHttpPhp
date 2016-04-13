@@ -8,7 +8,7 @@
  * @copyright       Complexity Software
  *
  */
-class Spryng_Api_Exception_IncompatiblePlatform extends Spryng_Api_Exception
+class Spryng_Api_Exception_IncompatiblePlatformException extends Spryng_Api_Exception
 {
     const INCOMPATIBLE_PHP_VERSION      = 100;
     const INCOMPATIBLE_CURL_EXTENSION   = 101;

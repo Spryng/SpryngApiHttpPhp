@@ -148,6 +148,11 @@ class Spryng_Api_Utilities_RequestHandler
 
     public function addGetParameter($value, $key = null, $parse = false)
     {
+        if ($parse)
+        {
+            $value = urlencode($value);
+        }
+
         if ($key === null)
         {
             array_push($this->getParameters, $value);

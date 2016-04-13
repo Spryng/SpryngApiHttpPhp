@@ -8,10 +8,12 @@
  * @copyright       Complexity Software
  *
  */
-class Spryng_Api_Exception_InvalidRequest extends Spryng_Api_Exception
+class Spryng_Api_Exception_InvalidRequestException extends Spryng_Api_Exception
 {
     const INVALID_CLIENT                        = 301;
     const BODY_TOO_LONG_WITHOUT_ALLOWLONG       = 302;
     const BODY_TOO_LONG                         = 303;
     const INVALID_DESTINATION                   = 304;
+    const ALPHANUMERIC_SENDER_TOO_LONG          = 305;
+    const NUMERIC_SENDER_TOO_LONG               = 306;
 }
