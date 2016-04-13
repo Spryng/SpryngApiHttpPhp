@@ -57,7 +57,7 @@ class Spryng_Api_Utilities_RequestHandler
             foreach ( $this->getGetParameters() as $key => $parameter )
             {
                 $iterator++;
-                $url .= urlencode( $key ) . '=' . urlencode( $parameter );
+                $url .= $key . '=' . $parameter;
 
                 if ( $iterator != count ( $this->getGetParameters() ) )
                 {
@@ -128,11 +128,34 @@ class Spryng_Api_Utilities_RequestHandler
     }
 
     /**
+     * Reset $this->getParameters to $getParameters. Parses as url if $parse is true.
+     *
      * @param array $getParameters
      */
-    public function setGetParameters($getParameters)
+    public function setGetParameters($getParameters, $parse = false)
     {
-        $this->getParameters = $getParameters;
+        $this->getParameters = array();
+        if ($parse) {
+            foreach ($getParameters as $key => $parameter)
+            {
+                $this->getParameters[$key] = urlencode($parameter);
+            }
+        }
+        else {
+            $this->getParameters = $getParameters;
+        }
+    }
+
+    public function addGetParameter($value, $key = null, $parse = false)
+    {
+        if ($key === null)
+        {
+            array_push($this->getParameters, $value);
+        }
+        else
+        {
+            $this->getParameters[$key] = $value;
+        }
     }
 
     /**
