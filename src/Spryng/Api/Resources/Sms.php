@@ -1,12 +1,22 @@
 <?php
 
 /**
- * Drives Sms functions
- *
  * @license         Berkeley Software Distribution License (BSD-License 2) http://www.opensource.org/licenses/bsd-license.php
  * @author          Roemer Bakker
  * @copyright       Complexity Software
+ */
+
+namespace SpryngApiPhp\Resources;
+
+use SpryngApiPhp\Utilities\Spryng_Api_Utilities_Validator;
+use SpryngApiPhp\Utilities\Spryng_Api_Utilities_RequestHandler;
+use SpryngApiPhp\Exception\Spryng_Api_Exception_InvalidRequestException;
+
+/**
+ * Drives SMS functions
  *
+ * Class Spryng_Api_Resources_Sms
+ * @package SpryngApiPhp\Resources
  */
 class Spryng_Api_Resources_Sms extends Spryng_Api_Resources_Base
 {
@@ -22,6 +32,8 @@ class Spryng_Api_Resources_Sms extends Spryng_Api_Resources_Base
     const SMS_URI = "/send.php";
 
     /**
+     * Defaults for optional parameters in send method
+     *
      * @var array
      */
     public $defaultSendOptions = array(
@@ -30,6 +42,8 @@ class Spryng_Api_Resources_Sms extends Spryng_Api_Resources_Base
     );
 
     /**
+     * Used to send text messages
+     *
      * @param $recipient string
      * @param $body string
      * @param $options array
@@ -91,6 +105,8 @@ class Spryng_Api_Resources_Sms extends Spryng_Api_Resources_Base
     }
 
     /**
+     * Returns the remaining credit balance
+     *
      * @return int
      */
     public function checkBalance ()

@@ -1,50 +1,76 @@
 <?php
 
-use GuzzleHttp\Client;
-
 /**
- * Handles HTTP requests
- *
  * @license         Berkeley Software Distribution License (BSD-License 2) http://www.opensource.org/licenses/bsd-license.php
  * @author          Roemer Bakker
  * @copyright       Complexity Software
- *
+ */
+
+namespace SpryngApiPhp\Utilities;
+
+use GuzzleHttp\Client;
+
+/**
+ * Class Spryng_Api_Utilities_RequestHandler
+ * @package SpryngApiPhp\Utilities
  */
 class Spryng_Api_Utilities_RequestHandler
 {
 
     /**
-     * @var GuzzleHttp\Client
+     * GuzzleHttp Client
+     *
+     * @var Client
      */
     protected $httpClient;
 
     /**
+     * The HTTP method used for this request
+     *
      * @var string
      */
     protected $httpMethod;
 
     /**
+     * The base URL for the requests
+     *
      * @var string
      */
     protected $baseUrl;
 
     /**
+     * The query string, basically everything after baseUrl
+     *
      * @var string
      */
     protected $queryString;
 
     /**
+     * Array of GET parameters
+     *
      * @var array
      */
     protected $getParameters = array();
 
+    /**
+     * Response from the request
+     *
+     * @var mixed
+     */
     protected $response;
 
+    /**
+     * Spryng_Api_Utilities_RequestHandler constructor.
+     * Creates instance of GuzzleHttp\Client
+     */
     public function __construct()
     {
         $this->httpClient = new Client();
     }
 
+    /**
+     * Formats the URL and executes the request
+     */
     public function doRequest ()
     {
         $url = $this->getBaseUrl() . $this->getQueryString();
@@ -72,6 +98,8 @@ class Spryng_Api_Utilities_RequestHandler
     }
 
     /**
+     * Returns HTTP method
+     *
      * @return string
      */
     public function getHttpMethod()
@@ -80,6 +108,8 @@ class Spryng_Api_Utilities_RequestHandler
     }
 
     /**
+     * Sets HTTP method
+     *
      * @param string $httpMethod
      */
     public function setHttpMethod($httpMethod)
@@ -88,6 +118,8 @@ class Spryng_Api_Utilities_RequestHandler
     }
 
     /**
+     * Returns baseUrl
+     *
      * @return string
      */
     public function getBaseUrl()
@@ -96,6 +128,8 @@ class Spryng_Api_Utilities_RequestHandler
     }
 
     /**
+     * Sets baseUrl
+     *
      * @param string $baseUrl
      */
     public function setBaseUrl($baseUrl)
@@ -104,6 +138,8 @@ class Spryng_Api_Utilities_RequestHandler
     }
 
     /**
+     * Returns the Query String
+     *
      * @return string
      */
     public function getQueryString()
@@ -112,6 +148,8 @@ class Spryng_Api_Utilities_RequestHandler
     }
 
     /**
+     * Sets the Query String
+     *
      * @param string $queryString
      */
     public function setQueryString($queryString)
@@ -120,6 +158,8 @@ class Spryng_Api_Utilities_RequestHandler
     }
 
     /**
+     * Returns array of all GET parameters
+     *
      * @return array
      */
     public function getGetParameters()
@@ -130,7 +170,8 @@ class Spryng_Api_Utilities_RequestHandler
     /**
      * Reset $this->getParameters to $getParameters. Parses as url if $parse is true.
      *
-     * @param array $getParameters
+     * @param $getParameters
+     * @param bool|false $parse
      */
     public function setGetParameters($getParameters, $parse = false)
     {
@@ -146,6 +187,13 @@ class Spryng_Api_Utilities_RequestHandler
         }
     }
 
+    /**
+     * Adds a new parameter to the GET parameter array
+     *
+     * @param $value
+     * @param null $key
+     * @param bool|false $parse
+     */
     public function addGetParameter($value, $key = null, $parse = false)
     {
         if ($parse)
@@ -164,6 +212,8 @@ class Spryng_Api_Utilities_RequestHandler
     }
 
     /**
+     * Returns the response
+     *
      * @return mixed
      */
     public function getResponse()
@@ -172,6 +222,8 @@ class Spryng_Api_Utilities_RequestHandler
     }
 
     /**
+     * Sets the response
+     *
      * @param mixed $response
      */
     public function setResponse($response)

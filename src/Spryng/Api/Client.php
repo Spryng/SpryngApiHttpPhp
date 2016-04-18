@@ -1,12 +1,22 @@
 <?php
 
 /**
- * Acts as driver for the application
- *
  * @license         Berkeley Software Distribution License (BSD-License 2) http://www.opensource.org/licenses/bsd-license.php
  * @author          Roemer Bakker
  * @copyright       Complexity Software
+ */
+
+namespace SpryngApiPhp;
+
+use SpryngApiPhp\Spryng_Api_CompatibilityChecker;
+use SpryngApiPhp\Resources\Spryng_Api_Resources_Sms;
+use SpryngApiPhp\Exception\Spryng_Api_Exception_AuthenticationException;
+
+/**
+ * Acts as driver for the library
  *
+ * Class Spryng_Api_Client
+ * @package SpryngApiPhp
  */
 class Spryng_Api_Client
 {
@@ -16,14 +26,21 @@ class Spryng_Api_Client
     const CLIENT_VERSION = "0.1";
 
     /**
-     * @var string Endpoint for all Api requests
+     * Api endpoint for all requests
+     *
+     * @var string
      */
     const API_ENDPOINT = "http://spryng.nl";
 
+    /**
+     * @var string
+     */
     protected $apiEndpoint = self::API_ENDPOINT;
 
     /**
-     * @var Spryng_Api_Resource_Sms
+     * Public instance of the Sms resource class
+     *
+     * @var Spryng_Api_Resources_Sms;
      */
     public $sms;
 
@@ -80,6 +97,8 @@ class Spryng_Api_Client
     }
 
     /**
+     * Returns instance of the compatibility checker class
+     *
      * @return Spryng_Api_CompatibilityChecker
      */
     protected function getCompatibilityChecker ()
@@ -93,6 +112,8 @@ class Spryng_Api_Client
     }
 
     /**
+     * Returns the API endpoint outside of static context.
+     *
      * @return string
      */
     public function getApiEndpoint()
@@ -101,6 +122,8 @@ class Spryng_Api_Client
     }
 
     /**
+     * Returns the current user's username
+     *
      * @return mixed
      */
     public function getUsername()
@@ -109,6 +132,8 @@ class Spryng_Api_Client
     }
 
     /**
+     * Sets the username
+     *
      * @param mixed $username
      */
     public function setUsername($username)
@@ -117,6 +142,8 @@ class Spryng_Api_Client
     }
 
     /**
+     * Returns the current user's password
+     *
      * @return mixed
      */
     public function getPassword()
@@ -125,6 +152,8 @@ class Spryng_Api_Client
     }
 
     /**
+     * Sets the password
+     *
      * @param mixed $password
      */
     public function setPassword($password)

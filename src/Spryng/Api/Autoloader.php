@@ -1,16 +1,24 @@
 <?php
 
 /**
- * Checks if the server is has the right software installed to use this library.
- *
  * @license         Berkeley Software Distribution License (BSD-License 2) http://www.opensource.org/licenses/bsd-license.php
  * @author          Roemer Bakker
  * @copyright       Complexity Software
+ */
+
+namespace SpryngApiPhp;
+
+/**
+ * PSR-0 Autoloader for Composer
  *
+ * Class Spryng_Api_Autoloader
+ * @package SpryngApiPhp
  */
 class Spryng_Api_Autoloader
 {
     /**
+     * Finds all classes and requires them
+     *
      * @param string $class_name
      */
     public static function autoload ($class_name)
@@ -19,15 +27,16 @@ class Spryng_Api_Autoloader
         {
             $file_name = str_replace("_", "/", $class_name);
             $file_name = realpath(dirname(__FILE__) . "/../../{$file_name}.php");
-
             if ($file_name !== false)
             {
-                require $file_name;
+                require_once($file_name);
             }
         }
     }
 
     /**
+     * Register all classes
+     *
      * @return bool
      */
     public static function register ()
@@ -36,6 +45,8 @@ class Spryng_Api_Autoloader
     }
 
     /**
+     * Unregister all classes
+     *
      * @return bool
      */
     public static function unregister ()

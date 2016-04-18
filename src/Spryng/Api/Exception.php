@@ -1,14 +1,20 @@
 <?php
 
 /**
- * Checks if the server is has the right software installed to use this library.
- *
  * @license         Berkeley Software Distribution License (BSD-License 2) http://www.opensource.org/licenses/bsd-license.php
  * @author          Roemer Bakker
  * @copyright       Complexity Software
- *
  */
-class Spryng_Api_Exception extends Exception
+
+namespace SpryngApiPhp;
+
+/**
+ * Acts as base for all exceptions
+ *
+ * Class Spryng_Api_Exception
+ * @package SpryngApiPhp
+ */
+class Spryng_Api_Exception extends \Exception
 {
     /**
      * @var string
@@ -16,6 +22,8 @@ class Spryng_Api_Exception extends Exception
     protected $_field;
 
     /**
+     * Returns the field
+     *
      * @return string
      */
     public function getField()
@@ -24,6 +32,8 @@ class Spryng_Api_Exception extends Exception
     }
 
     /**
+     * Sets the field
+     *
      * @param string $field
      */
     public function setField($field)

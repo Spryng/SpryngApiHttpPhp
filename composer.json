@@ -17,8 +17,8 @@
     "spryng", "php", "api", "sms", "text", "gateway"
   ],
   "autoload": {
-    "psr-0": {
-      "": "src/"
+    "psr-4": {
+      "SpryngApiPhp\\": "src/Spryng/Api"
     }
   }
 }

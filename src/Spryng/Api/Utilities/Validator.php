@@ -1,22 +1,34 @@
 <?php
 
 /**
- * Validates outgoing requests
- *
  * @license         Berkeley Software Distribution License (BSD-License 2) http://www.opensource.org/licenses/bsd-license.php
  * @author          Roemer Bakker
  * @copyright       Complexity Software
+ */
+
+namespace SpryngApiPhp\Utilities;
+
+use SpryngApiPhp\Exception\Spryng_Api_Exception_InvalidRequestException;
+
+/**
+ * Validates outgoing requests
  *
+ * Class Spryng_Api_Utilities_Validator
+ * @package SpryngApiPhp\Utilities
  */
 class Spryng_Api_Utilities_Validator
 {
 
     /**
+     * Routes that can be used
+     *
      * @var array
      */
     private static $routes = ['BUSINESS', 'ECONOMY'];
 
     /**
+     * Validates all options when sending text messages
+     *
      * @param $recipient string
      * @param $body string
      * @param $options array

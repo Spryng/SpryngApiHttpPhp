@@ -1,12 +1,20 @@
 <?php
 
 /**
- * Checks if the server is has the right software installed to use this library.
- *
  * @license         Berkeley Software Distribution License (BSD-License 2) http://www.opensource.org/licenses/bsd-license.php
  * @author          Roemer Bakker
  * @copyright       Complexity Software
+ */
+
+namespace SpryngApiPhp\Exception;
+
+use SpryngApiPhp\Spryng_Api_Exception;
+
+/**
+ * Warns if the server does not have the right software installed to use this library.
  *
+ * Class Spryng_Api_Exception_IncompatiblePlatformException
+ * @package SpryngApiPhp\Exception
  */
 class Spryng_Api_Exception_IncompatiblePlatformException extends Spryng_Api_Exception
 {

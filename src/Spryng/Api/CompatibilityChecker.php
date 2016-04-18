@@ -1,23 +1,32 @@
 <?php
 
 /**
- * Checks if the server is has the right software installed to use this library.
- *
  * @license         Berkeley Software Distribution License (BSD-License 2) http://www.opensource.org/licenses/bsd-license.php
  * @author          Roemer Bakker
  * @copyright       Complexity Software
- *
  */
 
+namespace SpryngApiPhp;
+
+use SpryngApiPhp\Exception\Spryng_Api_Exception_IncompatiblePlatformException as Spryng_Api_Exception_IncompatiblePlatform;
+
+/**
+ * Checks if the server is has the right software installed to use this library.
+ *
+ * Class Spryng_Api_CompatibilityChecker
+ * @package SpryngApiPhp
+ */
 class Spryng_Api_CompatibilityChecker
 {
     /**
+     * Minimum required PHP version
+     *
      * @var string
      */
     public static $MIN_PHP_VERSION = '5.2.0';
 
     /**
-     * Required cURL functions
+     * @var array
      */
     public static $REQUIRED_CURL_FUNCTIONS = array(
         'curl_init',
@@ -30,6 +39,8 @@ class Spryng_Api_CompatibilityChecker
     );
 
     /**
+     * Checks if the server satisfies all system requirements
+     *
      * @throws Spryng_Api_Exception_IncompatiblePlatform
      * @return void
      */
@@ -70,6 +81,8 @@ class Spryng_Api_CompatibilityChecker
     }
 
     /**
+     * Checks if the server's PHP installation satisfies the requirement
+     *
      * @return bool
      */
     public function satisfiesPhpVersion ()
@@ -78,6 +91,8 @@ class Spryng_Api_CompatibilityChecker
     }
 
     /**
+     * Checks if the PHP JSON extension is loaded
+     *
      * @return bool
      */
     public function satisfiesJsonExtension()
@@ -91,6 +106,8 @@ class Spryng_Api_CompatibilityChecker
     }
 
     /**
+     * Checks if the PHP cURL extension is loaded
+     *
      * @return bool
      */
     public function satisfiesCurlExtension()
@@ -106,6 +123,8 @@ class Spryng_Api_CompatibilityChecker
     }
 
     /**
+     * Checks if the required cURL functions are available
+     *
      * @return bool
      */
     public function satisfiesCurlFunctions()

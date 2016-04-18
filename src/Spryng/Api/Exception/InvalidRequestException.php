@@ -1,12 +1,20 @@
 <?php
 
 /**
- * Warns for invalid requests
- *
  * @license         Berkeley Software Distribution License (BSD-License 2) http://www.opensource.org/licenses/bsd-license.php
  * @author          Roemer Bakker
  * @copyright       Complexity Software
+ */
+
+namespace SpryngApiPhp\Exception;
+
+use SpryngApiPhp\Spryng_Api_Exception;
+
+/**
+ * Warns for invalid requests
  *
+ * Class Spryng_Api_Exception_InvalidRequestException
+ * @package SpryngApiPhp\Exception
  */
 class Spryng_Api_Exception_InvalidRequestException extends Spryng_Api_Exception
 {
