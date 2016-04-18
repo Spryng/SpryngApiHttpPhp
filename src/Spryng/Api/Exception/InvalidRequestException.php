@@ -17,4 +17,5 @@ class Spryng_Api_Exception_InvalidRequestException extends Spryng_Api_Exception
     const ALPHANUMERIC_SENDER_TOO_LONG          = 305;
     const NUMERIC_SENDER_TOO_LONG               = 306;
     const REFERENCE_INVALID_LENGTH              = 307;
+    const UNKNOWN                               = 0;
 }
