@@ -6,15 +6,15 @@
  * @copyright       Complexity Software
  */
 
-namespace SpryngApiPhp\Exception;
+namespace SpryngApiHttpPhp\Exception;
 
-use SpryngApiPhp\Spryng_Api_Exception;
+use SpryngApiHttpPhp\Spryng_Api_Exception;
 
 /**
  * Warns for invalid requests
  *
  * Class Spryng_Api_Exception_InvalidRequestException
- * @package SpryngApiPhp\Exception
+ * @package SpryngApiHttpPhp\Exception
  */
 class Spryng_Api_Exception_InvalidRequestException extends Spryng_Api_Exception
 {

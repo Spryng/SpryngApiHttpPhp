@@ -6,17 +6,17 @@
  * @copyright       Complexity Software
  */
 
-namespace SpryngApiPhp\Resources;
+namespace SpryngApiHttpPhp\Resources;
 
-use SpryngApiPhp\Utilities\Spryng_Api_Utilities_Validator;
-use SpryngApiPhp\Utilities\Spryng_Api_Utilities_RequestHandler;
-use SpryngApiPhp\Exception\Spryng_Api_Exception_InvalidRequestException;
+use SpryngApiHttpPhp\Utilities\Spryng_Api_Utilities_Validator;
+use SpryngApiHttpPhp\Utilities\Spryng_Api_Utilities_RequestHandler;
+use SpryngApiHttpPhp\Exception\Spryng_Api_Exception_InvalidRequestException;
 
 /**
  * Drives SMS functions
  *
  * Class Spryng_Api_Resources_Sms
- * @package SpryngApiPhp\Resources
+ * @package SpryngApiHttpPhp\Resources
  */
 class Spryng_Api_Resources_Sms extends Spryng_Api_Resources_Base
 {

@@ -6,13 +6,13 @@
  * @copyright       Complexity Software
  */
 
-namespace SpryngApiPhp;
+namespace SpryngApiHttpPhp;
 
 /**
  * Acts as base for all exceptions
  *
  * Class Spryng_Api_Exception
- * @package SpryngApiPhp
+ * @package SpryngApiHttpPhp
  */
 class Spryng_Api_Exception extends \Exception
 {

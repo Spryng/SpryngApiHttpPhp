@@ -6,15 +6,15 @@
  * @copyright       Complexity Software
  */
 
-namespace SpryngApiPhp\Resources;
+namespace SpryngApiHttpPhp\Resources;
 
-use SpryngApiPhp\Spryng_Api_Client;
+use SpryngApiHttpPhp\Spryng_Api_Client;
 
 /**
  * Acts as base class for all resource classes
  *
  * Class Spryng_Api_Resources_Base
- * @package SpryngApiPhp\Resources
+ * @package SpryngApiHttpPhp\Resources
  */
 class Spryng_Api_Resources_Base
 {

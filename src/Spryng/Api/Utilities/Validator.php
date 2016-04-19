@@ -6,15 +6,15 @@
  * @copyright       Complexity Software
  */
 
-namespace SpryngApiPhp\Utilities;
+namespace SpryngApiHttpPhp\Utilities;
 
-use SpryngApiPhp\Exception\Spryng_Api_Exception_InvalidRequestException;
+use SpryngApiHttpPhp\Exception\Spryng_Api_Exception_InvalidRequestException;
 
 /**
  * Validates outgoing requests
  *
  * Class Spryng_Api_Utilities_Validator
- * @package SpryngApiPhp\Utilities
+ * @package SpryngApiHttpPhp\Utilities
  */
 class Spryng_Api_Utilities_Validator
 {

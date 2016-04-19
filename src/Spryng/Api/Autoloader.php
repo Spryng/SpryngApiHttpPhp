@@ -6,13 +6,13 @@
  * @copyright       Complexity Software
  */
 
-namespace SpryngApiPhp;
+namespace SpryngApiHttpPhp;
 
 /**
  * PSR-0 Autoloader for Composer
  *
  * Class Spryng_Api_Autoloader
- * @package SpryngApiPhp
+ * @package SpryngApiHttpPhp
  */
 class Spryng_Api_Autoloader
 {

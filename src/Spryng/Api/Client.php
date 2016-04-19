@@ -6,17 +6,17 @@
  * @copyright       Complexity Software
  */
 
-namespace SpryngApiPhp;
+namespace SpryngApiHttpPhp;
 
-use SpryngApiPhp\Spryng_Api_CompatibilityChecker;
-use SpryngApiPhp\Resources\Spryng_Api_Resources_Sms;
-use SpryngApiPhp\Exception\Spryng_Api_Exception_AuthenticationException;
+use SpryngApiHttpPhp\Spryng_Api_CompatibilityChecker;
+use SpryngApiHttpPhp\Resources\Spryng_Api_Resources_Sms;
+use SpryngApiHttpPhp\Exception\Spryng_Api_Exception_AuthenticationException;
 
 /**
  * Acts as driver for the library
  *
  * Class Spryng_Api_Client
- * @package SpryngApiPhp
+ * @package SpryngApiHttpPhp
  */
 class Spryng_Api_Client
 {

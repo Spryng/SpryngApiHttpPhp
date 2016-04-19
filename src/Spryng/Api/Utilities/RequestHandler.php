@@ -6,13 +6,13 @@
  * @copyright       Complexity Software
  */
 
-namespace SpryngApiPhp\Utilities;
+namespace SpryngApiHttpPhp\Utilities;
 
 use GuzzleHttp\Client;
 
 /**
  * Class Spryng_Api_Utilities_RequestHandler
- * @package SpryngApiPhp\Utilities
+ * @package SpryngApiHttpPhp\Utilities
  */
 class Spryng_Api_Utilities_RequestHandler
 {

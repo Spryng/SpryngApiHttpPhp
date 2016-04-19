@@ -21,55 +21,7 @@
     <script src="../js/jquery.smooth-scroll.js"></script>
     <script src="../js/prism.min.js"></script>
     <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
-        <script type="text/javascript">
-        function loadExternalCodeSnippets() {
-            Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
-                var src = pre.getAttribute('data-src');
-                var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
-                var language = 'php';
-
-                var code = document.createElement('code');
-                code.className = 'language-' + language;
-
-                pre.textContent = '';
-
-                code.textContent = 'Loading…';
-
-                pre.appendChild(code);
-
-                var xhr = new XMLHttpRequest();
-
-                xhr.open('GET', src, true);
-
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState == 4) {
-
-                        if (xhr.status < 400 && xhr.responseText) {
-                            code.textContent = xhr.responseText;
-
-                            Prism.highlightElement(code);
-                        }
-                        else if (xhr.status >= 400) {
-                            code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
-                        }
-                        else {
-                            code.textContent = '✖ Error: File does not exist or is empty';
-                        }
-                    }
-                };
-
-                xhr.send(null);
-            });
-        }
-
-        $(document).ready(function(){
-            loadExternalCodeSnippets();
-        });
-        $('#source-view').on('shown', function () {
-            loadExternalCodeSnippets();
-        })
-    </script>
-
+    
     <link rel="shortcut icon" href="../images/favicon.ico"/>
     <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
     <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
@@ -144,28 +96,28 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1160297903"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-2065276993"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1160297903" class="accordion-body collapse in">
+            <div id="namespace-2065276993" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1001972634"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1127610106"></a>
                                 <a href="../namespaces/SpryngApiHttpPhp.html" style="margin-left: 30px; padding-left: 0">SpryngApiHttpPhp</a>
             </div>
-            <div id="namespace-1001972634" class="accordion-body collapse ">
+            <div id="namespace-1127610106" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1666170812"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-443473258"></a>
                                 <a href="../namespaces/SpryngApiHttpPhp.Exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
             </div>
-            <div id="namespace-1666170812" class="accordion-body collapse ">
+            <div id="namespace-443473258" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -182,10 +134,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-852373335"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-715434900"></a>
                                 <a href="../namespaces/SpryngApiHttpPhp.Resources.html" style="margin-left: 30px; padding-left: 0">Resources</a>
             </div>
-            <div id="namespace-852373335" class="accordion-body collapse ">
+            <div id="namespace-715434900" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -201,10 +153,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-783690687"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-215605213"></a>
                                 <a href="../namespaces/SpryngApiHttpPhp.Utilities.html" style="margin-left: 30px; padding-left: 0">Utilities</a>
             </div>
-            <div id="namespace-783690687" class="accordion-body collapse ">
+            <div id="namespace-215605213" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -242,61 +194,57 @@
     <section class="row-fluid">
         <div class="span10 offset2">
             <div class="row-fluid">
-                <div class="span8 content file">
+                <div class="span8 content namespace">
                     <nav>
-                                                                    </nav>
+                                                <a href="../namespaces/default.html">\</a>
+                                            </nav>
+                    <h1><small>\</small>SpryngApiHttpPhp</h1>
 
-                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
-                    <h1><small>Exception</small>AuthenticationException.php</h1>
-                    <p><em></em></p>
+                                        <h2>Namespaces</h2>
+                    <table class="table table-hover">
+                                                    <tr>
+                                <td><a href="../namespaces/SpryngApiHttpPhp.Exception.html">Exception</a></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../namespaces/SpryngApiHttpPhp.Resources.html">Resources</a></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../namespaces/SpryngApiHttpPhp.Utilities.html">Utilities</a></td>
+                            </tr>
+                                            </table>
                     
-
                     
                     
                                         <h2>Classes</h2>
                     <table class="table table-hover">
                                             <tr>
-                            <td><a href="../classes/SpryngApiHttpPhp.Exception.Spryng_Api_Exception_AuthenticationException.html">Spryng_Api_Exception_AuthenticationException</a></td>
-                            <td><em>Warns for issues with authentication</em></td>
+                            <td><a href="../classes/SpryngApiHttpPhp.Spryng_Api_Autoloader.html">Spryng_Api_Autoloader</a></td>
+                            <td><em>PSR-0 Autoloader for Composer</em></td>
+                        </tr>
+                                            <tr>
+                            <td><a href="../classes/SpryngApiHttpPhp.Spryng_Api_Client.html">Spryng_Api_Client</a></td>
+                            <td><em>Acts as driver for the library</em></td>
+                        </tr>
+                                            <tr>
+                            <td><a href="../classes/SpryngApiHttpPhp.Spryng_Api_CompatibilityChecker.html">Spryng_Api_CompatibilityChecker</a></td>
+                            <td><em>Checks if the server is has the right software installed to use this library.</em></td>
+                        </tr>
+                                            <tr>
+                            <td><a href="../classes/SpryngApiHttpPhp.Spryng_Api_Exception.html">Spryng_Api_Exception</a></td>
+                            <td><em>Acts as base for all exceptions</em></td>
                         </tr>
                                         </table>
                                     </div>
 
                 <aside class="span4 detailsbar">
                     <dl>
-                                                    <dt>Package</dt>
-                            <dd><div class="namespace-wrapper">\Default</div></dd>
-                        
-                        
+                        <dt>Namespace hierarchy</dt>
+                        <dd class="hierarchy">
+                                                                                                                                                                                                                                                                
+                                    <div class="namespace-wrapper"><a href="../namespaces/default.html">\</a></div>
+                                                                                        <div class="namespace-wrapper">\SpryngApiHttpPhp</div>
+                        </dd>
                     </dl>
-                    <h2>Tags</h2>
-                    <table class="table table-condensed">
-                                                    <tr>
-                                <th>
-                                    license
-                                </th>
-                                <td>
-                                                                            <p>Berkeley Software Distribution License (BSD-License 2) <a href="http://www.opensource.org/licenses/bsd-license.php">http://www.opensource.org/licenses/bsd-license.php</a></p>
-                                                                    </td>
-                            </tr>
-                                                    <tr>
-                                <th>
-                                    author
-                                </th>
-                                <td>
-                                                                            <p>Roemer Bakker</p>
-                                                                    </td>
-                            </tr>
-                                                    <tr>
-                                <th>
-                                    copyright
-                                </th>
-                                <td>
-                                                                            <p>Complexity Software</p>
-                                                                    </td>
-                            </tr>
-                                            </table>
-
                 </aside>
             </div>
 
@@ -304,16 +252,6 @@
             
         </div>
     </section>
-
-    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="source-view-label"></h3>
-        </div>
-        <div class="modal-body">
-            <pre data-src="../files/Exception/AuthenticationException.php.txt" class="language-php line-numbers"></pre>
-        </div>
-    </div>
 
     <footer class="row-fluid">
         <section class="span10 offset2">

@@ -6,15 +6,15 @@
  * @copyright       Complexity Software
  */
 
-namespace SpryngApiPhp\Exception;
+namespace SpryngApiHttpPhp\Exception;
 
-use SpryngApiPhp\Spryng_Api_Exception;
+use SpryngApiHttpPhp\Spryng_Api_Exception;
 
 /**
  * Warns for issues with authentication
  *
  * Class Spryng_Api_Exception_AuthenticationException
- * @package SpryngApiPhp\Exception
+ * @package SpryngApiHttpPhp\Exception
  */
 class Spryng_Api_Exception_AuthenticationException extends Spryng_Api_Exception
 {

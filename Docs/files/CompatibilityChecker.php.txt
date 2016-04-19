@@ -6,15 +6,15 @@
  * @copyright       Complexity Software
  */
 
-namespace SpryngApiPhp;
+namespace SpryngApiHttpPhp;
 
-use SpryngApiPhp\Exception\Spryng_Api_Exception_IncompatiblePlatformException as Spryng_Api_Exception_IncompatiblePlatform;
+use SpryngApiHttpPhp\Exception\Spryng_Api_Exception_IncompatiblePlatformException as Spryng_Api_Exception_IncompatiblePlatform;
 
 /**
  * Checks if the server is has the right software installed to use this library.
  *
  * Class Spryng_Api_CompatibilityChecker
- * @package SpryngApiPhp
+ * @package SpryngApiHttpPhp
  */
 class Spryng_Api_CompatibilityChecker
 {

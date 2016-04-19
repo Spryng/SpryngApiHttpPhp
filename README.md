@@ -9,7 +9,7 @@ __Using composer__
 The easiest way to install the libary is using composer:
 
 ```
-composer require spryng/SpryngApiPhp
+composer require spryng/SpryngApiHttpPhp
 ```
 
 When the installation is complete, you can initialize Spryng like so:
@@ -17,7 +17,7 @@ When the installation is complete, you can initialize Spryng like so:
 ```
 require( 'vendor/autoload.php')
 
-use SpryngApiPhp\Spryng_Api_Client;
+use SpryngApiHttpPhp\Spryng_Api_Client;
 
 $spryng = new Spryng_Api_Client('username', 'password');
 ```
@@ -27,7 +27,7 @@ __Without composer__
 If you're not yet using composer, you can use the autoloader:
 
 ```
-require ('SpryngApiPhp/src/Spryng/Api/Autoloader.php');
+require ('SpryngApiHttpPhp/src/Spryng/Api/Autoloader.php');
 
 $spryng = new Spryng_Api_Client('username', 'password');
 ```
@@ -54,7 +54,7 @@ __Full example__
 ```
 require( 'vendor/autoload.php')
 
-use SpryngApiPhp\Spryng_Api_Client;
+use SpryngApiHttpPhp\Spryng_Api_Client;
 
 $spryng = new Spryng_Api_Client('username', 'password');
 
@@ -79,7 +79,7 @@ Alongside the ability to send SMS messages, it's also possible to request your c
 ```
 require( 'vendor/autoload.php')
 
-use SpryngApiPhp\Spryng_Api_Client;
+use SpryngApiHttpPhp\Spryng_Api_Client;
 
 $spryng = new Spryng_Api_Client('username', 'password');
 
