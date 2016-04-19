@@ -4,7 +4,7 @@ Hi, welcome to the documentation for the Spryng PHP API Library. This guide cont
 
 ### Installation and initialization
 
-** Using composer **
+__Using composer__
 
 The easiest way to install the libary is using composer:
 
@@ -22,7 +22,7 @@ use SpryngApiPhp\Spryng_Api_Client;
 $spryng = new Spryng_Api_Client('username', 'password');
 ```
 
-** Without composer **
+__Without composer__
 
 If you're not yet using composer, you can use the autoloader:
 
@@ -40,7 +40,7 @@ To send an SMS, you should use the `Client::sms->send()` method. It takes the fo
 * `$body` Body of the sms
 * `$options` Additional parameters like `sender` and `route`
 
-** Options **
+__Options__
 
 There are a number of options you can specify with your request. The requirements for these options are available in the general documentation.
 
@@ -49,7 +49,7 @@ There are a number of options you can specify with your request. The requirement
 * `reference` An optional reference for delivery reports.
 * `allowlong` Weither you want to allow Long SMS or not. Should be `true` or `false`.
 
-** Full example **
+__Full example__
 
 ```
 require( 'vendor/autoload.php')
