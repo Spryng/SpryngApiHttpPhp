@@ -19,7 +19,7 @@ require( 'vendor/autoload.php')
 
 use SpryngApiHttpPhp\Spryng_Api_Client;
 
-$spryng = new Spryng_Api_Client('username', 'password');
+$spryng = new Spryng_Api_Client('username', 'password', 'My Company');
 ```
 
 __Without composer__
@@ -29,7 +29,7 @@ If you're not yet using composer, you can use the autoloader:
 ```
 require ('SpryngApiHttpPhp/src/Spryng/Api/Autoloader.php');
 
-$spryng = new Spryng_Api_Client('username', 'password');
+$spryng = new Spryng_Api_Client('username', 'password', 'My Company');
 ```
 
 ### Sending a SMS
@@ -38,13 +38,12 @@ To send an SMS, you should use the `Client::sms->send()` method. It takes the fo
 
 * `$recipient` Phone number you're sending the sms to
 * `$body` Body of the sms
-* `$options` Additional parameters like `sender` and `route`
+* `$options` Additional parameters like `allowlong` and `route`
 
 __Options__
 
 There are a number of options you can specify with your request. The requirements for these options are available in the general documentation.
 
-* `sender` Originator address, like your company name.
 * `route` To select Spryng Business or Spryng Economy. Can either be `business` or `economy`
 * `reference` An optional reference for delivery reports.
 * `allowlong` Weither you want to allow Long SMS or not. Should be `true` or `false`.
@@ -56,12 +55,11 @@ require( 'vendor/autoload.php')
 
 use SpryngApiHttpPhp\Spryng_Api_Client;
 
-$spryng = new Spryng_Api_Client('username', 'password');
+$spryng = new Spryng_Api_Client('username', 'password', 'My Company');
 
 try 
 {
 	$spryng->sms->send('31612345678', 'A sample message!', array(
-										'sender'    => 'Your Company',
 										'route'     => 'business',
 										'allowlong' => true
 										'reference' => 'ABC123456789'));
@@ -81,7 +79,7 @@ require( 'vendor/autoload.php')
 
 use SpryngApiHttpPhp\Spryng_Api_Client;
 
-$spryng = new Spryng_Api_Client('username', 'password');
+$spryng = new Spryng_Api_Client('username', 'password', 'My Company');
 
 echo 'Current credit balance: ' . $spryng->sms->checkBalance();
 ```

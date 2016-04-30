@@ -75,15 +75,10 @@ class Spryng_Api_Resources_Sms extends Spryng_Api_Resources_Base
             $requestHandler->addGetParameter($this->api->getUsername(), 'USERNAME', false);
             $requestHandler->addGetParameter($this->api->getPassword(), 'PASSWORD', false);
             $requestHandler->addGetParameter($recipient, 'DESTINATION', true);
+            $requestHandler->addGetParameter($this->api->getSender(), 'SENDER', true);
             $requestHandler->addGetParameter($options['allowlong'], 'ALLOWLONG', false);
             $requestHandler->addGetParameter($body, 'BODY', true);
             $requestHandler->addGetParameter($options['route'], 'ROUTE', true);
-
-
-            if ( isset($options['sender']) )
-            {
-                $requestHandler->addGetParameter($options['sender'], 'SENDER', true);
-            }
 
             // Add optional reference
             if ( isset($options['reference']) )

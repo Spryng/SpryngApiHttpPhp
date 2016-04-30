@@ -11,6 +11,7 @@ namespace SpryngApiHttpPhp;
 use SpryngApiHttpPhp\Spryng_Api_CompatibilityChecker;
 use SpryngApiHttpPhp\Resources\Spryng_Api_Resources_Sms;
 use SpryngApiHttpPhp\Exception\Spryng_Api_Exception_AuthenticationException;
+use SpryngApiHttpPhp\Exception\Spryng_Api_Exception_InvalidRequestException;
 
 /**
  * Acts as driver for the library
@@ -55,15 +56,21 @@ class Spryng_Api_Client
     protected $password;
 
     /**
-     * Spryng_Api_Client constructor.
-     * @param $username string
-     * @param $password string
+     * @var string Originator name
      */
-    public function __construct ($username, $password)
+    protected $sender;
+
+    /**
+     * Spryng_Api_Client constructor.
+     * @param $username
+     * @param $password
+     * @param $sender
+     */
+    public function __construct ( $username, $password, $sender )
     {
         $this->getCompatibilityChecker()->checkCompatibility();
 
-        $this->setCredentials($username, $password);
+        $this->setCredentials($username, $password, $sender);
 
         $this->sms = new Spryng_Api_Resources_Sms($this);
     }
@@ -73,9 +80,11 @@ class Spryng_Api_Client
      *
      * @param $username
      * @param $password
+     * @param $sender
      * @throws Spryng_Api_Exception_AuthenticationException
+     * @throws Spryng_Api_Exception_InvalidRequestException
      */
-    public function setCredentials( $username, $password )
+    public function setCredentials( $username, $password, $sender )
     {
         if (strlen($username) < 2 || strlen($username) > 32)
         {
@@ -92,8 +101,24 @@ class Spryng_Api_Client
             );
         }
 
+        if ( intval($sender) > 0 && strlen($sender) > 14 )
+        {
+            throw new Spryng_Api_Exception_InvalidRequestException(
+                "Numeric senders can not be longer than 14 characters long.",
+                306
+            );
+        }
+        else if ( intval($sender) === 0 && strlen($sender) > 11 )
+        {
+            throw new Spryng_Api_Exception_InvalidRequestException(
+                "Alphanumeric senders can not be longer than 11 characters long.",
+                305
+            );
+        }
+
         $this->setUsername($username);
         $this->setPassword($password);
+        $this->setSender($sender);
     }
 
     /**
@@ -159,5 +184,25 @@ class Spryng_Api_Client
     public function setPassword($password)
     {
         $this->password = $password;
+    }
+
+    /**
+     * Returns the current user's originator address.
+     *
+     * @return string
+     */
+    public function getSender()
+    {
+        return $this->sender;
+    }
+
+    /**
+     * Sets the sender
+     *
+     * @param string $sender
+     */
+    public function setSender($sender)
+    {
+        $this->sender = $sender;
     }
 }

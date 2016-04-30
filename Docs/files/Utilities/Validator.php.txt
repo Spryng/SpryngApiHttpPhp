@@ -47,22 +47,6 @@ class Spryng_Api_Utilities_Validator
             );
         }
 
-        // Validate sender
-        if ( intval($options['sender']) > 0 && strlen($options['sender']) > 14 )
-        {
-            throw new Spryng_Api_Exception_InvalidRequestException(
-                "Numeric senders can not be longer than 14 characters long.",
-                306
-            );
-        }
-        else if ( intval($options['sender']) === 0 && strlen($options['sender']) > 11 )
-        {
-            throw new Spryng_Api_Exception_InvalidRequestException(
-                "Alphanumeric senders can not be longer than 11 characters long.",
-                305
-            );
-        }
-
         if ( isset($options['route']) )
         {
             if ( !in_array(strtoupper($options['route']), self::$routes) )
