@@ -44,7 +44,7 @@ __Options__
 
 There are a number of options you can specify with your request. The requirements for these options are available in the general documentation.
 
-* `route` To select Spryng Business or Spryng Economy. Can either be `business` or `economy`
+* `route` Enter your assigned route.
 * `reference` An optional reference for delivery reports.
 * `allowlong` Weither you want to allow Long SMS or not. Should be `true` or `false`.
 

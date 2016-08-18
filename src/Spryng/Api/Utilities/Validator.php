@@ -20,13 +20,6 @@ class Spryng_Api_Utilities_Validator
 {
 
     /**
-     * Routes that can be used
-     *
-     * @var array
-     */
-    private static $routes = ['BUSINESS', 'ECONOMY'];
-
-    /**
      * Validates all options when sending text messages
      *
      * @param $recipient string
@@ -45,17 +38,6 @@ class Spryng_Api_Utilities_Validator
                 "Destination is invalid.",
                 304
             );
-        }
-
-        if ( isset($options['route']) )
-        {
-            if ( !in_array(strtoupper($options['route']), self::$routes) )
-            {
-                throw new Spryng_Api_Exception_InvalidRequestException(
-                    "The client you're trying to use does not exist.",
-                    301
-                );
-            }
         }
 
         // Validate reference
