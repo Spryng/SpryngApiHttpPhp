@@ -8,10 +8,10 @@
 
 namespace SpryngApiHttpPhp;
 
-use SpryngApiHttpPhp\Spryng_Api_CompatibilityChecker;
-use SpryngApiHttpPhp\Resources\Spryng_Api_Resources_Sms;
-use SpryngApiHttpPhp\Exception\Spryng_Api_Exception_AuthenticationException;
-use SpryngApiHttpPhp\Exception\Spryng_Api_Exception_InvalidRequestException;
+use SpryngApiHttpPhp\CompatibilityChecker;
+use SpryngApiHttpPhp\Resources\Sms;
+use SpryngApiHttpPhp\Exception\AuthenticationException;
+use SpryngApiHttpPhp\Exception\InvalidRequestException;
 
 /**
  * Acts as driver for the library
@@ -19,7 +19,7 @@ use SpryngApiHttpPhp\Exception\Spryng_Api_Exception_InvalidRequestException;
  * Class Spryng_Api_Client
  * @package SpryngApiHttpPhp
  */
-class Spryng_Api_Client
+class Client
 {
     /**
      * @var string Version of this client
@@ -41,7 +41,7 @@ class Spryng_Api_Client
     /**
      * Public instance of the Sms resource class
      *
-     * @var Spryng_Api_Resources_Sms;
+     * @var Sms;
      */
     public $sms;
 
@@ -72,7 +72,7 @@ class Spryng_Api_Client
 
         $this->setCredentials($username, $password, $sender);
 
-        $this->sms = new Spryng_Api_Resources_Sms($this);
+        $this->sms = new Sms($this);
     }
 
     /**
@@ -81,21 +81,21 @@ class Spryng_Api_Client
      * @param $username
      * @param $password
      * @param $sender
-     * @throws Spryng_Api_Exception_AuthenticationException
-     * @throws Spryng_Api_Exception_InvalidRequestException
+     * @throws AuthenticationException
+     * @throws InvalidRequestException
      */
     public function setCredentials( $username, $password, $sender )
     {
         if (strlen($username) < 2 || strlen($username) > 32)
         {
-            throw new Spryng_Api_Exception_AuthenticationException(
+            throw new AuthenticationException(
                 "Username must be between 2 and 32 characters.",
                 201
             );
         }
         if (strlen($password) < 6 || strlen($password) > 32)
         {
-            throw new Spryng_Api_Exception_AuthenticationException(
+            throw new AuthenticationException(
                 "Password must be between 6 and 32 characters.",
                 202
             );
@@ -103,14 +103,14 @@ class Spryng_Api_Client
 
         if ( intval($sender) > 0 && strlen($sender) > 14 )
         {
-            throw new Spryng_Api_Exception_InvalidRequestException(
+            throw new InvalidRequestException(
                 "Numeric senders can not be longer than 14 characters long.",
                 306
             );
         }
         else if ( intval($sender) === 0 && strlen($sender) > 11 )
         {
-            throw new Spryng_Api_Exception_InvalidRequestException(
+            throw new InvalidRequestException(
                 "Alphanumeric senders can not be longer than 11 characters long.",
                 305
             );
@@ -124,14 +124,14 @@ class Spryng_Api_Client
     /**
      * Returns instance of the compatibility checker class
      *
-     * @return Spryng_Api_CompatibilityChecker
+     * @return CompatibilityChecker
      */
     protected function getCompatibilityChecker ()
     {
         static $checker = NULL;
         if (!$checker)
         {
-            $checker = new Spryng_Api_CompatibilityChecker();
+            $checker = new CompatibilityChecker();
         }
         return $checker;
     }

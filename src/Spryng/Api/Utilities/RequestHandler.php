@@ -11,10 +11,10 @@ namespace SpryngApiHttpPhp\Utilities;
 use GuzzleHttp\Client;
 
 /**
- * Class Spryng_Api_Utilities_RequestHandler
+ * Class RequestHandler
  * @package SpryngApiHttpPhp\Utilities
  */
-class Spryng_Api_Utilities_RequestHandler
+class RequestHandler
 {
 
     /**

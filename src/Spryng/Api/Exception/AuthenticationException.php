@@ -8,15 +8,15 @@
 
 namespace SpryngApiHttpPhp\Exception;
 
-use SpryngApiHttpPhp\Spryng_Api_Exception;
+use SpryngApiHttpPhp\Exception;
 
 /**
  * Warns for issues with authentication
  *
- * Class Spryng_Api_Exception_AuthenticationException
+ * Class AuthenticationException
  * @package SpryngApiHttpPhp\Exception
  */
-class Spryng_Api_Exception_AuthenticationException extends Spryng_Api_Exception
+class AuthenticationException extends Exception
 {
     const USERNAME_INVALID_LENGTH   = 201;
     const PASSWORD_INVALID_LENGTH   = 202;

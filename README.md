@@ -17,9 +17,9 @@ When the installation is complete, you can initialize Spryng like so:
 ```
 require( 'vendor/autoload.php')
 
-use SpryngApiHttpPhp\Spryng_Api_Client;
+use SpryngApiHttpPhp\Client;
 
-$spryng = new Spryng_Api_Client('username', 'password', 'My Company');
+$spryng = new Client('username', 'password', 'My Company');
 ```
 
 __Without composer__
@@ -29,7 +29,7 @@ If you're not yet using composer, you can use the autoloader:
 ```
 require ('SpryngApiHttpPhp/src/Spryng/Api/Autoloader.php');
 
-$spryng = new Spryng_Api_Client('username', 'password', 'My Company');
+$spryng = new Client('username', 'password', 'My Company');
 ```
 
 ### Sending a SMS
@@ -53,9 +53,9 @@ __Full example__
 ```
 require( 'vendor/autoload.php')
 
-use SpryngApiHttpPhp\Spryng_Api_Client;
+use SpryngApiHttpPhp\Client;
 
-$spryng = new Spryng_Api_Client('username', 'password', 'My Company');
+$spryng = new Client('username', 'password', 'My Company');
 
 try 
 {
@@ -64,7 +64,7 @@ try
 										'allowlong' => true
 										'reference' => 'ABC123456789'));
 }
-catch (Spryng_Api_Exception_InvalidRequestException $e)
+catch (Exception_InvalidRequestException $e)
 {
 	echo $e->getMessage();
 }
@@ -77,9 +77,9 @@ Alongside the ability to send SMS messages, it's also possible to request your c
 ```
 require( 'vendor/autoload.php')
 
-use SpryngApiHttpPhp\Spryng_Api_Client;
+use SpryngApiHttpPhp\Client;
 
-$spryng = new Spryng_Api_Client('username', 'password', 'My Company');
+$spryng = new Client('username', 'password', 'My Company');
 
 echo 'Current credit balance: ' . $spryng->sms->checkBalance();
 ```

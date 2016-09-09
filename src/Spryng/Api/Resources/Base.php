@@ -8,7 +8,7 @@
 
 namespace SpryngApiHttpPhp\Resources;
 
-use SpryngApiHttpPhp\Spryng_Api_Client;
+use SpryngApiHttpPhp\Client;
 
 /**
  * Acts as base class for all resource classes
@@ -16,7 +16,7 @@ use SpryngApiHttpPhp\Spryng_Api_Client;
  * Class Spryng_Api_Resources_Base
  * @package SpryngApiHttpPhp\Resources
  */
-class Spryng_Api_Resources_Base
+class Base
 {
 
     /**
@@ -31,9 +31,9 @@ class Spryng_Api_Resources_Base
 
     /**
      * Spryng_Api_Resource_Base constructor.
-     * @param Spryng_Api_Client $api
+     * @param Client $api
      */
-    public function __construct (Spryng_Api_Client $api)
+    public function __construct (Client $api)
     {
         $this->api = $api;
 

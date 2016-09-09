@@ -8,7 +8,7 @@
 
 namespace SpryngApiHttpPhp\Exception;
 
-use SpryngApiHttpPhp\Spryng_Api_Exception;
+use SpryngApiHttpPhp\Exception;
 
 /**
  * Warns for invalid requests
@@ -16,7 +16,7 @@ use SpryngApiHttpPhp\Spryng_Api_Exception;
  * Class Spryng_Api_Exception_InvalidRequestException
  * @package SpryngApiHttpPhp\Exception
  */
-class Spryng_Api_Exception_InvalidRequestException extends Spryng_Api_Exception
+class InvalidRequestException extends Exception
 {
     const INVALID_CLIENT                        = 301;
     const BODY_TOO_LONG_WITHOUT_ALLOWLONG       = 302;

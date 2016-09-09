@@ -8,7 +8,7 @@
 
 namespace SpryngApiHttpPhp;
 
-use SpryngApiHttpPhp\Exception\Spryng_Api_Exception_IncompatiblePlatformException as Spryng_Api_Exception_IncompatiblePlatform;
+use SpryngApiHttpPhp\Exception\IncompatiblePlatformException as IncompatiblePlatform;
 
 /**
  * Checks if the server is has the right software installed to use this library.
@@ -16,7 +16,7 @@ use SpryngApiHttpPhp\Exception\Spryng_Api_Exception_IncompatiblePlatformExceptio
  * Class Spryng_Api_CompatibilityChecker
  * @package SpryngApiHttpPhp
  */
-class Spryng_Api_CompatibilityChecker
+class CompatibilityChecker
 {
     /**
      * Minimum required PHP version
@@ -41,41 +41,41 @@ class Spryng_Api_CompatibilityChecker
     /**
      * Checks if the server satisfies all system requirements
      *
-     * @throws Spryng_Api_Exception_IncompatiblePlatform
+     * @throws IncompatiblePlatform
      * @return void
      */
     public function checkCompatibility()
     {
         if (!$this->satisfiesPhpVersion())
         {
-            throw new Spryng_Api_Exception_IncompatiblePlatform(
+            throw new IncompatiblePlatform(
                 "The client requires PHP version >= " . self::$MIN_PHP_VERSION . ", you have " . PHP_VERSION . ".",
-                Spryng_Api_Exception_IncompatiblePlatform::INCOMPATIBLE_PHP_VERSION
+               IncompatiblePlatform::INCOMPATIBLE_PHP_VERSION
             );
         }
 
         if (!$this->satisfiesJsonExtension())
         {
-            throw new Spryng_Api_Exception_IncompatiblePlatform(
+            throw new IncompatiblePlatform(
                 "PHP extension json is not enabled. Please make sure to enable 'json' in your PHP configuration.",
-                Spryng_Api_Exception_IncompatiblePlatform::INCOMPATIBLE_JSON_EXTENSION
+                IncompatiblePlatform::INCOMPATIBLE_JSON_EXTENSION
             );
         }
 
         if (!$this->satisfiesCurlExtension())
         {
-            throw new Spryng_Api_Exception_IncompatiblePlatform(
+            throw new IncompatiblePlatform(
                 "PHP extension cURL is not enabled. Please make sure to enable 'cURL' in your PHP configuration.",
-                Spryng_Api_Exception_IncompatiblePlatform::INCOMPATIBLE_CURL_EXTENSION
+                IncompatiblePlatform::INCOMPATIBLE_CURL_EXTENSION
             );
         }
 
         if (!$this->satisfiesCurlFunctions())
         {
-            throw new Spryng_Api_Exception_IncompatiblePlatform(
+            throw new IncompatiblePlatform(
                 "This client requires the following cURL functions to be available: " . implode(', ', self::$REQUIRED_CURL_FUNCTIONS) . ". ".
                 "Please check that none of these function are disabled in your PHP configuration.",
-                Spryng_Api_Exception_IncompatiblePlatform::INCOMPATIBLE_CURL_FUNCTION
+                IncompatiblePlatform::INCOMPATIBLE_CURL_FUNCTION
             );
         }
     }
