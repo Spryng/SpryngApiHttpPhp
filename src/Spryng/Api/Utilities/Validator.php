@@ -8,15 +8,15 @@
 
 namespace SpryngApiHttpPhp\Utilities;
 
-use SpryngApiHttpPhp\Exception\Spryng_Api_Exception_InvalidRequestException;
+use SpryngApiHttpPhp\Exception\InvalidRequestException;
 
 /**
  * Validates outgoing requests
  *
- * Class Spryng_Api_Utilities_Validator
+ * Class Validator
  * @package SpryngApiHttpPhp\Utilities
  */
-class Spryng_Api_Utilities_Validator
+class Validator
 {
 
     /**
@@ -26,7 +26,7 @@ class Spryng_Api_Utilities_Validator
      * @param $body string
      * @param $options array
      * @return bool
-     * @throws Spryng_Api_Exception_InvalidRequestException
+     * @throws InvalidRequestException
      */
     static public function validateSendRequest($recipient, $body, $options)
     {
@@ -34,7 +34,7 @@ class Spryng_Api_Utilities_Validator
         preg_match('/^[1-9]{1}[0-9]{3,14}$/', $recipient, $match);
         if ( count($match) === 0 )
         {
-            throw new Spryng_Api_Exception_InvalidRequestException(
+            throw new InvalidRequestException(
                 "Destination is invalid.",
                 304
             );
@@ -46,7 +46,7 @@ class Spryng_Api_Utilities_Validator
             $ref = $options['reference'];
             if ( strlen($ref) < 1 || strlen($ref) > 256)
             {
-                throw new Spryng_Api_Exception_InvalidRequestException(
+                throw new InvalidRequestException(
                     "Reference must be between 1 and 256 characters long.",
                     307
                 );
@@ -61,7 +61,7 @@ class Spryng_Api_Utilities_Validator
                 // Check for length requirement
                 if (strlen($body) > 612)
                 {
-                    throw new Spryng_Api_Exception_InvalidRequestException(
+                    throw new InvalidRequestException(
                         "Maximum length for body is 612 characters.",
                         303
                     );
@@ -70,7 +70,7 @@ class Spryng_Api_Utilities_Validator
             else {
                 // Check for length requirement if allowlong is dissabled
                 if (strlen($body) > 160 && !$options['allowlong']) {
-                    throw new Spryng_Api_Exception_InvalidRequestException(
+                    throw new InvalidRequestException(
                         "Body can't be longer than 160 characters without 'allowlong' enabled.",
                         302
                     );

@@ -11,10 +11,10 @@ namespace SpryngApiHttpPhp;
 /**
  * Acts as base for all exceptions
  *
- * Class Spryng_Api_Exception
+ * Class Exception
  * @package SpryngApiHttpPhp
  */
-class Spryng_Api_Exception extends \Exception
+class Exception extends \Exception
 {
     /**
      * @var string

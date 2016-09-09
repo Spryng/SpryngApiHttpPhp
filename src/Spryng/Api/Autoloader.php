@@ -9,50 +9,44 @@
 namespace SpryngApiHttpPhp;
 
 /**
- * PSR-0 Autoloader for Composer
- *
- * Class Spryng_Api_Autoloader
+ * Class Autoloader
  * @package SpryngApiHttpPhp
  */
-class Spryng_Api_Autoloader
+class Autoloader
 {
-    /**
-     * Finds all classes and requires them
-     *
-     * @param string $class_name
-     */
-    public static function autoload ($class_name)
+
+    public $directories = array();
+
+    public function __construct($dir, $depth=0)
     {
-        if (strpos($class_name, "Spryng_") === 0)
+        $this->autoload_dir(realpath(__DIR__));
+    }
+
+    public function autoload_dir($dir)
+    {
+        $scan = glob($dir."/*");
+        $directories = array();
+
+        foreach ($scan as $path)
         {
-            $file_name = str_replace("_", "/", $class_name);
-            $file_name = realpath(dirname(__FILE__) . "/../../{$file_name}.php");
-            if ($file_name !== false)
+            if (is_dir($path))
             {
-                require_once($file_name);
+                array_push($directories, $path);
+                continue;
             }
+
+            if (preg_match('/\.php$/', $path))
+            {
+                require_once realpath($path);
+            }
+        }
+
+        foreach($directories as $dir)
+        {
+            $this->autoload_dir($dir);
         }
     }
 
-    /**
-     * Register all classes
-     *
-     * @return bool
-     */
-    public static function register ()
-    {
-        return spl_autoload_register(array(__CLASS__, "autoload"));
-    }
-
-    /**
-     * Unregister all classes
-     *
-     * @return bool
-     */
-    public static function unregister ()
-    {
-        return spl_autoload_unregister(array(__CLASS__, "autoload"));
-    }
 }
 
-Spryng_Api_Autoloader::register();
+$al = new Autoloader(__DIR__, 0);

@@ -8,9 +8,9 @@
 
 namespace SpryngApiHttpPhp\Resources;
 
-use SpryngApiHttpPhp\Utilities\Spryng_Api_Utilities_Validator;
-use SpryngApiHttpPhp\Utilities\Spryng_Api_Utilities_RequestHandler;
-use SpryngApiHttpPhp\Exception\Spryng_Api_Exception_InvalidRequestException;
+use SpryngApiHttpPhp\Utilities\Validator;
+use SpryngApiHttpPhp\Utilities\RequestHandler;
+use SpryngApiHttpPhp\Exception\InvalidRequestException;
 
 /**
  * Drives SMS functions
@@ -18,7 +18,7 @@ use SpryngApiHttpPhp\Exception\Spryng_Api_Exception_InvalidRequestException;
  * Class Spryng_Api_Resources_Sms
  * @package SpryngApiHttpPhp\Resources
  */
-class Spryng_Api_Resources_Sms extends Spryng_Api_Resources_Base
+class Sms extends Base
 {
 
     /**
@@ -48,7 +48,7 @@ class Spryng_Api_Resources_Sms extends Spryng_Api_Resources_Base
      * @param $body string
      * @param $options array
      * @return mixed string
-     * @throws Spryng_Api_Exception_InvalidRequestException
+     * @throws InvalidRequestException
      */
     public function send($recipient, $body, $options)
     {
@@ -64,10 +64,10 @@ class Spryng_Api_Resources_Sms extends Spryng_Api_Resources_Base
             $options['route'] = $this->defaultSendOptions['route'];
         }
 
-        if (Spryng_Api_Utilities_Validator::validateSendRequest($recipient, $body, $options))
+        if (Validator::validateSendRequest($recipient, $body, $options))
         {
             // Prepare the request
-            $requestHandler = new Spryng_Api_Utilities_RequestHandler();
+            $requestHandler = new RequestHandler();
             $requestHandler->setHttpMethod("GET");
             $requestHandler->setBaseUrl($this->api->getApiEndpoint());
             $requestHandler->setQueryString(static::SMS_URI);
@@ -92,7 +92,7 @@ class Spryng_Api_Resources_Sms extends Spryng_Api_Resources_Base
             return $requestHandler->getResponse();
         }
         else {
-            throw new Spryng_Api_Exception_InvalidRequestException(
+            throw new InvalidRequestException(
                 "Request is invalid for unknown reason.",
                 0
             );
@@ -106,7 +106,7 @@ class Spryng_Api_Resources_Sms extends Spryng_Api_Resources_Base
      */
     public function checkBalance ()
     {
-        $requestHandler = new Spryng_Api_Utilities_RequestHandler();
+        $requestHandler = new RequestHandler();
 
         $requestHandler->setHttpMethod("GET");
         $requestHandler->setBaseUrl($this->api->getApiEndpoint());

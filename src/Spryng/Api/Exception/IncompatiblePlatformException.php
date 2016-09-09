@@ -8,15 +8,15 @@
 
 namespace SpryngApiHttpPhp\Exception;
 
-use SpryngApiHttpPhp\Spryng_Api_Exception;
+use SpryngApiHttpPhp\Exception;
 
 /**
  * Warns if the server does not have the right software installed to use this library.
  *
- * Class Spryng_Api_Exception_IncompatiblePlatformException
+ * Class IncompatiblePlatformException
  * @package SpryngApiHttpPhp\Exception
  */
-class Spryng_Api_Exception_IncompatiblePlatformException extends Spryng_Api_Exception
+class IncompatiblePlatformException extends Exception
 {
     const INCOMPATIBLE_PHP_VERSION      = 100;
     const INCOMPATIBLE_CURL_EXTENSION   = 101;
