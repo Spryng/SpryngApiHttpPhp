@@ -9,19 +9,34 @@
 namespace SpryngApiHttpPhp;
 
 /**
+ * Used to autoload all classes when not installed with Composer.
+ *
  * Class Autoloader
  * @package SpryngApiHttpPhp
  */
 class Autoloader
 {
 
+    /**
+     * To temporarily store directory names.
+     * @var array
+     */
     public $directories = array();
 
+    /**
+     * Autoloader constructor.
+     * @param $dir
+     * @param int $depth
+     */
     public function __construct($dir, $depth=0)
     {
         $this->autoload_dir(realpath(__DIR__));
     }
 
+    /**
+     * Autoloads all classes
+     * @param $dir
+     */
     public function autoload_dir($dir)
     {
         $scan = glob($dir."/*");

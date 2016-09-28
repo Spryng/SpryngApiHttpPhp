@@ -1,6 +1,6 @@
 ## Spryng PHP API Library
 
-Hi, welcome to the documentation for the Spryng PHP API Library. This guide contains practical information on how to use the library. Full PHPDOC can be found in the repository.
+Hi, welcome to the documentation for the Spryng PHP API Library. This guide contains practical information on how to use the library. Full PHPDOC can be found [in this repository](https://github.com/Spryng/SpryngApiHttpPhpDocs).
 
 ### Installation and initialization
 
@@ -9,13 +9,13 @@ __Using composer__
 The easiest way to install the libary is using composer:
 
 ```
-composer require spryng/SpryngApiHttpPhp
+composer require spryng/spryng-api-http-php
 ```
 
 When the installation is complete, you can initialize Spryng like so:
 
 ```
-require( 'vendor/autoload.php')
+require( 'vendor/autoload.php');
 
 use SpryngApiHttpPhp\Client;
 
@@ -62,9 +62,10 @@ try
 	$spryng->sms->send('31612345678', 'A sample message!', array(
 										'route'     => 'business',
 										'allowlong' => true
-										'reference' => 'ABC123456789'));
+										'reference' => 'ABC123456789')
+	);
 }
-catch (Exception_InvalidRequestException $e)
+catch (InvalidRequestException $e)
 {
 	echo $e->getMessage();
 }
