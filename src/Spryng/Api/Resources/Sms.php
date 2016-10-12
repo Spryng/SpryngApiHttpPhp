@@ -117,6 +117,6 @@ class Sms extends Base
         ], true);
         $requestHandler->doRequest();
 
-        return (int) $requestHandler->getResponse();
+        return $requestHandler->getResponse();
     }
 }
