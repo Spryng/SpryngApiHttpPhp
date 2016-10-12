@@ -31,7 +31,7 @@ class Client
      *
      * @var string
      */
-    const API_ENDPOINT = "https://spryng.nl";
+    const API_ENDPOINT = "https://api.spryngsms.com/api";
 
     /**
      * @var string
