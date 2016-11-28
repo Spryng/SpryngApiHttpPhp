@@ -12,7 +12,7 @@ We raden u aan de library te installeren met Composer. Dit kan op de volgende ma
 composer require spryng/spryng-api-http-php
 ```
 
-Zodra de installatie voltooid is, kunt u Spryng op de volgende manier initialiseren:
+Wanneer de installatie voltooid is, kunt u Spryng op de volgende manier initialiseren:
 
 ```
 require ( 'vendor/autoload.php' );
