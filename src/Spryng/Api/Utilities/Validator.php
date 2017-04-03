@@ -77,6 +77,17 @@ class Validator
                 }
             }
         }
+        
+        if ( isset($options['rawencoding']) )
+        {
+            if ( gettype($options) != "boolean" )
+            {
+                throw new InvalidRequestException(
+                    "rawencoding option has to be instantiated as a boolean",
+                    100
+                );
+            }
+        }
 
         return true;
     }
