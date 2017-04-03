@@ -59,14 +59,20 @@ class Client
      * @var string Originator name
      */
     protected $sender;
+    
+    /**
+     * @var boolean secret label
+     */
+    protected $isSecret;
 
     /**
      * Spryng_Api_Client constructor.
      * @param $username
      * @param $password
      * @param $sender
+     * @param $isSecret
      */
-    public function __construct ( $username, $password, $sender )
+    public function __construct ( $username, $password, $sender, $isSecret = false )
     {
         $this->getCompatibilityChecker()->checkCompatibility();
 
@@ -204,5 +210,24 @@ class Client
     public function setSender($sender)
     {
         $this->sender = $sender;
+    }
+    
+    /**
+     * Returns the value of the isSecret parameter.
+     *
+     * @return boolean
+     */
+    public function getIsSecret()
+    {
+        return $this->isSecret;
+    }
+    /**
+     * Sets the isSecret
+     *
+     * @param boolean isSecret
+     */
+    public function setIsSecret($isSecret)
+    {
+        $this->isSecret = $isSecret;
     }
 }

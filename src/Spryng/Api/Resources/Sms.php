@@ -73,7 +73,14 @@ class Sms extends Base
             $requestHandler->setQueryString(static::SMS_URI);
             $requestHandler->addGetParameter('send', 'OPERATION', false);
             $requestHandler->addGetParameter($this->api->getUsername(), 'USERNAME', false);
-            $requestHandler->addGetParameter($this->api->getPassword(), 'PASSWORD', false);
+            if ( $this->api->getIsSecret() )
+            {
+                $requestHandler->addGetParameter($this->api->getPassword(), 'SECRET', false);
+            } 
+            else 
+            {
+                $requestHandler->addGetParameter($this->api->getPassword(), 'PASSWORD', false);
+            }
             $requestHandler->addGetParameter($recipient, 'DESTINATION', true);
             $requestHandler->addGetParameter($this->api->getSender(), 'SENDER', true);
             $requestHandler->addGetParameter($options['allowlong'], 'ALLOWLONG', false);
