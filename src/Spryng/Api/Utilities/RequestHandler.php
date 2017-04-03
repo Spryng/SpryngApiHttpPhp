@@ -83,17 +83,6 @@ class RequestHandler
             foreach ( $this->getGetParameters() as $key => $parameter )
             {
                 $iterator++;
-                
-                if ( $key == "password" && $this->isSecret )
-                {
-                    $key = "secret";
-                }
-                
-                if ( $key == "isSecret" )
-                {
-                    continue;
-                }
-                
                 $url .= $key . '=' . $parameter;
 
                 if ( $iterator != count ( $this->getGetParameters() ) )
