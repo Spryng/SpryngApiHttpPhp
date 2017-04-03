@@ -59,6 +59,11 @@ class Client
      * @var string Originator name
      */
     protected $sender;
+    
+    /**
+     * @var boolean secret label
+     */
+    protected $isSecret;
 
     /**
      * Spryng_Api_Client constructor.
