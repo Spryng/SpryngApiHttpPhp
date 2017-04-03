@@ -211,4 +211,23 @@ class Client
     {
         $this->sender = $sender;
     }
+    
+    /**
+     * Returns the value of the isSecret parameter.
+     *
+     * @return boolean
+     */
+    public function getIsSecret()
+    {
+        return $this->isSecret;
+    }
+    /**
+     * Sets the isSecret
+     *
+     * @param boolean isSecret
+     */
+    public function setIsSecret($isSecret)
+    {
+        $this->isSecret = $isSecret;
+    }
 }
