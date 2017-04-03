@@ -38,7 +38,8 @@ class Sms extends Base
      */
     public $defaultSendOptions = array(
         'route'     => 'ECONOMY',
-        'allowlong' => false
+        'allowlong' => false,
+        'rawencoding' => false
     );
 
     /**
@@ -64,6 +65,11 @@ class Sms extends Base
             $options['route'] = $this->defaultSendOptions['route'];
         }
 
+        if (! isset( $options['rawencoding']) )
+        {
+            $options['rawencoding'] = $this->defaultSendOptions['rawencoding'];
+        }
+
         if (Validator::validateSendRequest($recipient, $body, $options))
         {
             // Prepare the request
@@ -86,13 +92,12 @@ class Sms extends Base
             $requestHandler->addGetParameter($options['allowlong'], 'ALLOWLONG', false);
             $requestHandler->addGetParameter($body, 'BODY', true);
             $requestHandler->addGetParameter($options['route'], 'ROUTE', true);
+            $requestHandler->addGetParameter($options['rawencoding'], 'RAWENCODING', FALSE);
 
             // Add optional reference
-            if ( isset($options['reference']) )
-            {
+            if ( isset($options['reference']) ) {
                 $requestHandler->addGetParameter($options['reference'], 'REFERENCE', true);
             }
-
 
             $requestHandler->doRequest();
 
