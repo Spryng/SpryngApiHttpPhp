@@ -8,7 +8,6 @@
 
 namespace SpryngApiHttpPhp;
 
-use SpryngApiHttpPhp\CompatibilityChecker;
 use SpryngApiHttpPhp\Resources\Sms;
 use SpryngApiHttpPhp\Exception\AuthenticationException;
 use SpryngApiHttpPhp\Exception\InvalidRequestException;
@@ -77,6 +76,7 @@ class Client
         $this->getCompatibilityChecker()->checkCompatibility();
 
         $this->setCredentials($username, $password, $sender);
+        $this->setIsSecret($isSecret);
 
         $this->sms = new Sms($this);
     }
