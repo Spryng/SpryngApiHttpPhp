@@ -65,8 +65,9 @@ class Client
      * @param $username
      * @param $password
      * @param $sender
+     * @param $isSecret
      */
-    public function __construct ( $username, $password, $sender )
+    public function __construct ( $username, $password, $sender, $isSecret = false )
     {
         $this->getCompatibilityChecker()->checkCompatibility();
 
