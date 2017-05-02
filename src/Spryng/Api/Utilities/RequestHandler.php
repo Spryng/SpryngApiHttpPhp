@@ -8,8 +8,6 @@
 
 namespace SpryngApiHttpPhp\Utilities;
 
-use GuzzleHttp\Client;
-
 /**
  * Class RequestHandler
  * @package SpryngApiHttpPhp\Utilities
@@ -20,9 +18,9 @@ class RequestHandler
     /**
      * GuzzleHttp Client
      *
-     * @var Client
+     * @var resource
      */
-    protected $httpClient;
+    protected $http;
 
     /**
      * The HTTP method used for this request
@@ -60,12 +58,27 @@ class RequestHandler
     protected $response;
 
     /**
+     * HTTP response code resulting from the latest request.
+     *
+     * @var int
+     */
+    protected $responseCode;
+
+    /**
+     * Array of HTTP Headers
+     *
+     * @var array
+     */
+    protected $headers;
+
+    /**
      * Spryng_Api_Utilities_RequestHandler constructor.
      * Creates instance of GuzzleHttp\Client
      */
     public function __construct()
     {
-        $this->httpClient = new Client();
+        $this->http = curl_init();
+        $this->addHeader('User-Agent', 'SpryngApiHttpPhp/1.1.1');
     }
 
     /**
@@ -73,28 +86,41 @@ class RequestHandler
      */
     public function doRequest ()
     {
+        curl_setopt($this->http, CURLOPT_HTTPHEADER, $this->getHeaders());
+        curl_setopt($this->http, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($this->http, CURLOPT_URL, $this->prepareUrl());
+
+        $response = curl_exec($this->http);
+        $this->setResponse($response);
+        $this->setResponseCode(curl_getinfo($this->http, CURLINFO_RESPONSE_CODE));
+    }
+
+    /**
+     * Formats the URL.
+     *
+     * @return string
+     */
+    private function prepareUrl()
+    {
         $url = $this->getBaseUrl() . $this->getQueryString();
 
-        if ( count( $this->getGetParameters () ) > 0 )
+        if (count($this->getGetParameters()) > 0)
         {
             $url .= '?';
-
             $iterator = 0;
-            foreach ( $this->getGetParameters() as $key => $parameter )
+            foreach ($this->getGetParameters() as $key => $parameter)
             {
                 $iterator++;
                 $url .= $key . '=' . $parameter;
 
-                if ( $iterator != count ( $this->getGetParameters() ) )
+                if ($iterator != count($this->getGetParameters()))
                 {
                     $url .= '&';
                 }
             }
-
-            $req = $this->httpClient->request($this->getHttpMethod(), $url);
-
-            $this->setResponse( (string) $req->getBody() );
         }
+
+        return $url;
     }
 
     /**
@@ -229,5 +255,46 @@ class RequestHandler
     public function setResponse($response)
     {
         $this->response = $response;
+    }
+
+    /**
+     * Add a HTTP header
+     *
+     * @param string $key
+     * @param string $value
+     */
+    public function addHeader($key, $value)
+    {
+        $this->headers[$key] = $value;
+    }
+
+    /**
+     * Returns protected headers class variable.
+     *
+     * @return array
+     */
+    public function getHeaders()
+    {
+        return $this->headers;
+    }
+
+    /**
+     * Get the protected responseCode class variable
+     *
+     * @return int
+     */
+    public function getResponseCode()
+    {
+        return $this->responseCode;
+    }
+
+    /**
+     * Internal function to set the response code.
+     *
+     * @param int $responseCode
+     */
+    private function setResponseCode($responseCode)
+    {
+        $this->responseCode = $responseCode;
     }
 }

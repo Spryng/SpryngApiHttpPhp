@@ -1,7 +1,7 @@
 {
   "name": "spryng/spryng-api-http-php",
   "description": "Spryng API client library for PHP",
-  "version": "0.1",
+  "version": "1.1.1",
   "homepage": "https://github.com/Spryng/SpryngApiHttpPhp",
   "license": "BSD-2-Clause",
   "authors": [
@@ -10,9 +10,6 @@
       "email": "contact@roemerbakker.com"
     }
   ],
-  "require": {
-    "guzzlehttp/guzzle": "~6.0"
-  },
   "keywords": [
     "spryng", "php", "api", "sms", "text", "gateway"
   ],
