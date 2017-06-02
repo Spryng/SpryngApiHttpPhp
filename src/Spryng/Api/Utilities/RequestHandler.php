@@ -78,7 +78,7 @@ class RequestHandler
     public function __construct()
     {
         $this->http = curl_init();
-        $this->addHeader('User-Agent', 'SpryngApiHttpPhp/1.1.1');
+        $this->addHeader('User-Agent', 'SpryngApiHttpPhp/1.2');
     }
 
     /**
