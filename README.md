@@ -14,7 +14,7 @@ composer require spryng/spryng-api-http-php
 
 When the installation is complete, you can initialize Spryng like so:
 
-```
+```php
 require( 'vendor/autoload.php');
 
 use SpryngApiHttpPhp\Client;
@@ -26,7 +26,7 @@ __Without composer__
 
 If you're not yet using composer, you can use the autoloader:
 
-```
+```php
 require ('SpryngApiHttpPhp/src/Spryng/Api/Autoloader.php');
 
 $spryng = new Client('username', 'password', 'My Company');
@@ -46,11 +46,12 @@ There are a number of options you can specify with your request. The requirement
 
 * `route` Enter your assigned route.
 * `reference` An optional reference for delivery reports.
-* `allowlong` Weither you want to allow Long SMS or not. Should be `true` or `false`.
+* `allowlong` Weather you want to allow Long SMS or not. Should be `true` or `false`.
+* `rawencoding` ISO/UTF encoding
 
 __Full example__
 
-```
+```php
 require( 'vendor/autoload.php')
 
 use SpryngApiHttpPhp\Client;
@@ -62,7 +63,8 @@ try
 	$spryng->sms->send('31612345678', 'A sample message!', array(
 										'route'     => 'business',
 										'allowlong' => true
-										'reference' => 'ABC123456789')
+										'reference' => 'ABC123456789'
+										'rawencoding' => false)
 	);
 }
 catch (InvalidRequestException $e)
@@ -75,7 +77,7 @@ catch (InvalidRequestException $e)
 
 Alongside the ability to send SMS messages, it's also possible to request your current credit balance. This method does not require any parameters and can be used like this:
 
-```
+```php
 require( 'vendor/autoload.php')
 
 use SpryngApiHttpPhp\Client;

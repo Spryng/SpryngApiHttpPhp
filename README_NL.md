@@ -14,7 +14,7 @@ composer require spryng/spryng-api-http-php
 
 Wanneer de installatie voltooid is, kunt u Spryng op de volgende manier initialiseren:
 
-```
+```php
 require ( 'vendor/autoload.php' );
 
 use SpryngApiHttpPhp\Client;
@@ -28,7 +28,7 @@ __Installatie zonder Composer wordt niet aangeraden! De library maakt gebruik va
 
 Als u geen gebruik maakt van Composer, bijvoorbeeld door technische beperkingen, kunt u gebruik maken van de autoloader om alle klassen in te laden.
 
-```
+```php
 $ git clone https://github.com/spryng/SpryngApiHttpPhp.git
 ```
 
@@ -55,10 +55,11 @@ Er zijn enkele opties die u kunt specificeren bij het versturen van een SMS beri
 * `route` De route die u wilt gebruiken. Deze wordt u aangeleverd.
 * `reference` Een optionele referentie voor uw bericht. Deze kunt u gebruiken om delivery reports te ontvangen.
 * `allowlong` Boolean waarde waarmee u aangeeft of berichten langer dan 160 tekens in verschillende berichten verzonden mogen worden.
+* `rawencoding` Boolean waarde voor ISO/UTF encoding
 
 __Volledig voorbeeld__
 
-```
+```php
 require ( 'vendor/autoload.php' );
 
 use SpryngApiHttpPhp\Client;
@@ -71,7 +72,8 @@ try
 	$spryng->sms->send('31612345678', 'Een voorbeeld bericht!', array(
 		'route'		=> 'business',
 		'allowlong'	=> true,
-		'reference'	=> 'ABC123456789')
+		'reference'	=> 'ABC123456789'
+		'rawencoding'   => false)
 	);
 }
 catch (InvalidRequestException $e)
@@ -84,7 +86,7 @@ catch (InvalidRequestException $e)
 
 Naast het versturen van SMS berichten, is het ook mogelijk om uw credit balans op te vragen. Deze methode heeft geen extra argumenten nodig en kan als volgt worden geïmplementeerd:
 
-```
+```php
 require ( 'SpryngApiHttpPhp/src/Spryng/Api/Autoloader.php' );
 
 use SpryngApiHttpPhp\Client;
