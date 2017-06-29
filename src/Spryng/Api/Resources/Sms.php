@@ -83,6 +83,7 @@ class Sms extends Base
             $requestHandler->addGetParameter($options['allowlong'], 'ALLOWLONG', false);
             $requestHandler->addGetParameter($body, 'BODY', true);
             $requestHandler->addGetParameter($options['route'], 'ROUTE', true);
+            $requestHandler->addGetParameter($options['rawencoding'], 'RAWENCODING', false);
 
             // Add optional reference
             if ( isset($options['reference']) )

@@ -78,6 +78,28 @@ class Validator
             }
         }
 
+        if (isset($options['rawencoding'])) {
+            if (!is_bool($options['rawencoding']))
+            {
+                throw new InvalidRequestException(
+                    "Rawencoding option must be a boolean",
+                    302
+                );
+            }
+            else {
+                if ($options['rawencoding'])
+                {
+                    $options['rawencoding'] = '1';
+                }
+                else {
+                    $options['rawencoding'] = '0';
+                }
+            }
+        }
+        else {
+            $options['rawencoding'] = '0';
+        }
+
         return true;
     }
 }
