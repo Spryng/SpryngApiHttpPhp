@@ -37,8 +37,9 @@ class Sms extends Base
      * @var array
      */
     public $defaultSendOptions = array(
-        'route'     => 'ECONOMY',
-        'allowlong' => false
+        'route'         => 'ECONOMY',
+        'allowlong'     => false,
+        'rawencoding'   => false
     );
 
     /**
@@ -62,6 +63,11 @@ class Sms extends Base
         if (! isset( $options['route']) )
         {
             $options['route'] = $this->defaultSendOptions['route'];
+        }
+
+        if (! isset( $options['rawencoding']) )
+        {
+            $options['rawencoding'] = $this->defaultSendOptions['rawencoding'];
         }
 
         if (Validator::validateSendRequest($recipient, $body, $options))
