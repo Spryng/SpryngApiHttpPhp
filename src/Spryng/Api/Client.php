@@ -23,7 +23,7 @@ class Client
     /**
      * @var string Version of this client
      */
-    const CLIENT_VERSION = "1.3.0";
+    const CLIENT_VERSION = "1.3.1";
 
     /**
      * Api endpoint for all requests
