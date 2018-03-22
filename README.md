@@ -60,16 +60,16 @@ $spryng = new Client('username', 'password', 'My Company');
 
 try 
 {
-	$spryng->sms->send('31612345678', 'A sample message!', array(
-										'route'     => 'business',
-										'allowlong' => true
-										'reference' => 'ABC123456789'
-										'rawencoding' => false)
-	);
+    $spryng->sms->send('31612345678', 'A sample message!', array(
+        'route'     => 'business',
+         'allowlong' => true
+         'reference' => 'ABC123456789'
+         'rawencoding' => false)
+    );
 }
 catch (InvalidRequestException $e)
 {
-	echo $e->getMessage();
+    echo $e->getMessage();
 }
 ```
 
