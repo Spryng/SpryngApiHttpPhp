@@ -1,3 +1,5 @@
+# This version of the SDK is deprecated. Please head over to [this repository](https://github.com/spryng/rest-api-php/) for the REST API SDK, which supports many more features and makes use of our new REST API. This repository will be archived soon.
+
 ## Spryng PHP API Library
 
 Hi, welcome to the documentation for the Spryng PHP API Library. This guide contains practical information on how to use the library. Full PHPDOC can be found [in this repository](https://github.com/Spryng/SpryngApiHttpPhpDocs).
