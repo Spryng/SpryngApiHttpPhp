@@ -73,12 +73,13 @@ class RequestHandler
 
     /**
      * Spryng_Api_Utilities_RequestHandler constructor.
-     * Creates instance of GuzzleHttp\Client
      */
     public function __construct()
     {
         $this->http = curl_init();
-        $this->addHeader('User-Agent', 'SpryngApiHttpPhp/1.2');
+        $this->addHeader('User-Agent', 'SpryngApiHttpPhp/1.4.0');
+        $this->addHeader('Accept', '*/*');
+        $this->addHeader('Accept-Encoding', 'gzip, deflate, br');
     }
 
     /**
@@ -89,6 +90,10 @@ class RequestHandler
         curl_setopt($this->http, CURLOPT_HTTPHEADER, $this->getHeaders());
         curl_setopt($this->http, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($this->http, CURLOPT_URL, $this->prepareUrl());
+
+        // set http method
+        $method = $this->getHttpMethod() === 'POST' ? CURLOPT_POST : CURLOPT_GET;
+        curl_setopt($this->http, $method, true);
 
         $response = curl_exec($this->http);
         $this->setResponse($response);

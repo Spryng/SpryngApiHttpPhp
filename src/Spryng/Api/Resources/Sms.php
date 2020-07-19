@@ -24,12 +24,12 @@ class Sms extends Base
     /**
      * @var string URI for the balance Api
      */
-    const BALANCE_URI = "/check.php";
+    const BALANCE_URI = "/balance";
 
     /**
      * @var string URI for the send Api
      */
-    const SMS_URI = "/send.php";
+    const SMS_URI = "/message";
 
     /**
      * Defaults for optional parameters in send method
@@ -37,9 +37,7 @@ class Sms extends Base
      * @var array
      */
     public $defaultSendOptions = array(
-        'route'         => 'ECONOMY',
-        'allowlong'     => false,
-        'rawencoding'   => false
+        'route'         => 'business'
     );
 
     /**
@@ -53,61 +51,44 @@ class Sms extends Base
      */
     public function send($recipient, $body, $options)
     {
-        // Make sure allowlong and route are set for validation.
-
-        if (! isset($options['allowlong']))
-        {
-            $options['allowlong'] = $this->defaultSendOptions['allowlong'];
-        }
-
         if (! isset( $options['route']) )
         {
             $options['route'] = $this->defaultSendOptions['route'];
         }
 
-        if (! isset( $options['rawencoding']) )
+        try {
+            $options = Validator::validateSendOptions($options, $body);
+            $recipient = Validator::validateMessageRecipient($recipient);
+        } catch (\Exception $e) {
+            throw new InvalidRequestException('Request malformed: '. $e->getMessage());
+        }
+
+        // Prepare the request
+        $requestHandler = new RequestHandler();
+        $requestHandler->setHttpMethod("POST");
+        $requestHandler->setBaseUrl($this->api->getApiEndpoint());
+        $requestHandler->setQueryString(static::SMS_URI);
+        $requestHandler->addGetParameter($this->api->getUsername(), 'username', false);
+
+        // Add either PASSWORD or SECRET accordingly
+        $auth = $this->api->getIsSecret() ? 'secret' : 'password';
+        $requestHandler->addGetParameter($this->api->getPassword(), $auth, false);
+
+        $requestHandler->addGetParameter($recipient, 'destination', true);
+        $requestHandler->addGetParameter($this->api->getSender(), 'sender', true);
+        $requestHandler->addGetParameter($body, 'body', true);
+        $requestHandler->addGetParameter($options['route'], 'route', true);
+
+        // Add optional reference
+        if ( isset($options['reference']) )
         {
-            $options['rawencoding'] = $this->defaultSendOptions['rawencoding'];
+            $requestHandler->addGetParameter($options['reference'], 'reference', true);
         }
 
-        if (Validator::validateSendRequest($recipient, $body, $options))
-        {
-            // Prepare the request
-            $requestHandler = new RequestHandler();
-            $requestHandler->setHttpMethod("GET");
-            $requestHandler->setBaseUrl($this->api->getApiEndpoint());
-            $requestHandler->setQueryString(static::SMS_URI);
-            $requestHandler->addGetParameter('send', 'OPERATION', false);
-            $requestHandler->addGetParameter($this->api->getUsername(), 'USERNAME', false);
 
-            // Add either PASSWORD or SECRET accordingly
-            $auth = $this->api->getIsSecret() ? 'SECRET' : 'PASSWORD';
-            $requestHandler->addGetParameter($this->api->getPassword(), $auth, false);
+        $requestHandler->doRequest();
 
-            $requestHandler->addGetParameter($recipient, 'DESTINATION', true);
-            $requestHandler->addGetParameter($this->api->getSender(), 'SENDER', true);
-            $requestHandler->addGetParameter($options['allowlong'], 'ALLOWLONG', false);
-            $requestHandler->addGetParameter($body, 'BODY', true);
-            $requestHandler->addGetParameter($options['route'], 'ROUTE', true);
-            $requestHandler->addGetParameter($options['rawencoding'], 'RAWENCODING', false);
-
-            // Add optional reference
-            if ( isset($options['reference']) )
-            {
-                $requestHandler->addGetParameter($options['reference'], 'REFERENCE', true);
-            }
-
-
-            $requestHandler->doRequest();
-
-            return $requestHandler->getResponse();
-        }
-        else {
-            throw new InvalidRequestException(
-                "Request is invalid for unknown reason.",
-                0
-            );
-        }
+        return $requestHandler->getResponse();
     }
 
     /**
@@ -119,7 +100,7 @@ class Sms extends Base
     {
         $requestHandler = new RequestHandler();
 
-        $requestHandler->setHttpMethod("GET");
+        $requestHandler->setHttpMethod("POST");
         $requestHandler->setBaseUrl($this->api->getApiEndpoint());
         $requestHandler->setQueryString(static::BALANCE_URI);
         $requestHandler->setGetParameters([

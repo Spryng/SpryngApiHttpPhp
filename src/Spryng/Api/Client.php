@@ -23,14 +23,14 @@ class Client
     /**
      * @var string Version of this client
      */
-    const CLIENT_VERSION = "1.3.1";
+    const CLIENT_VERSION = "1.4.0";
 
     /**
      * Api endpoint for all requests
      *
      * @var string
      */
-    const API_ENDPOINT = "https://api.spryngsms.com/api";
+    const API_ENDPOINT = "https://rest.spryngsms.com/api/simple";
 
     /**
      * @var string
@@ -97,13 +97,6 @@ class Client
             throw new AuthenticationException(
                 "Username must be between 2 and 32 characters.",
                 201
-            );
-        }
-        if (strlen($password) < 6 || strlen($password) > 32)
-        {
-            throw new AuthenticationException(
-                "Password must be between 6 and 32 characters.",
-                202
             );
         }
 
