@@ -18,19 +18,15 @@ use SpryngApiHttpPhp\Exception\InvalidRequestException;
  */
 class Validator
 {
-
     /**
-     * Validates all options when sending text messages
+     * Validates the destination phone number
      *
-     * @param $recipient string
-     * @param $body string
-     * @param $options array
-     * @return bool
-     * @throws InvalidRequestException
+     * @param $recipient string The destination phone number
+     * @return string Parsed phone number
+     * @throws InvalidRequestException Thrown when the recipient is malformed
      */
-    static public function validateSendRequest($recipient, $body, $options)
+    public static function validateMessageRecipient($recipient)
     {
-        // Validate recipient
         preg_match('/^[1-9]{1}[0-9]{3,14}$/', $recipient, $match);
         if ( count($match) === 0 )
         {
@@ -40,6 +36,19 @@ class Validator
             );
         }
 
+        return $recipient;
+    }
+
+    /**
+     * Validates message send options. Currently only reference
+     *
+     * @param $options
+     * @param null $body
+     * @return mixed
+     * @throws InvalidRequestException
+     */
+    public static function validateSendOptions($options, $body = null)
+    {
         // Validate reference
         if ( isset($options['reference']) )
         {
@@ -53,53 +62,6 @@ class Validator
             }
         }
 
-        // Validate length
-        if ( isset($options['allowlong']) )
-        {
-            if ($options['allowlong'])
-            {
-                // Check for length requirement
-                if (strlen($body) > 612)
-                {
-                    throw new InvalidRequestException(
-                        "Maximum length for body is 612 characters.",
-                        303
-                    );
-                }
-            }
-            else {
-                // Check for length requirement if allowlong is dissabled
-                if (strlen($body) > 160 && !$options['allowlong']) {
-                    throw new InvalidRequestException(
-                        "Body can't be longer than 160 characters without 'allowlong' enabled.",
-                        302
-                    );
-                }
-            }
-        }
-
-        if (isset($options['rawencoding'])) {
-            if (!is_bool($options['rawencoding']))
-            {
-                throw new InvalidRequestException(
-                    "Rawencoding option must be a boolean",
-                    302
-                );
-            }
-            else {
-                if ($options['rawencoding'])
-                {
-                    $options['rawencoding'] = '1';
-                }
-                else {
-                    $options['rawencoding'] = '0';
-                }
-            }
-        }
-        else {
-            $options['rawencoding'] = '0';
-        }
-
-        return true;
+        return $options;
     }
 }
